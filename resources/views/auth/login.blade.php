@@ -1,5 +1,7 @@
 @extends('layouts.form')
 
+@section('title', 'Comienza sesión')
+
 @section('content')
 
 <div class="auth-wrapper">
@@ -9,6 +11,10 @@
 				<div class="col-md-12">
 					<div class="card-body">
 						<img src="{{ asset('images/logo-dark.png')}}" alt="" class="img-fluid mb-4">
+
+						{{-- <div class="row align-items-center text-center">
+							<h4>Bienvenido a Tareas por hacer</h4>
+						</div> --}}
 						@if ($errors->any())
                             <h4 class="mb-3 f-w-400">Ufff algo salió mal. Intenta de nuevo</h4>    
                             <div class="alert alert-danger" role="alert">

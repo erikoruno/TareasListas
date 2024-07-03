@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Ablepro v8.0 bootstrap admin template by Phoenixcoded</title>
+	<title>{{ config('app.name')}} | @yield('title')</title>
 	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 11]>
@@ -17,7 +17,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
-
+	
 	
 	<!-- Favicon icon -->
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon">
@@ -25,13 +25,23 @@
 	<!-- vendor css -->
 	<link rel="stylesheet" href="{{ asset('css/style.css')}}">
 	
-	
+	<style>
+        .header-text {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e5f0f4;
+            margin-bottom: 0px;
+        }
+       
+       
+    </style>
 
 
 </head>
 
 <!-- [ auth-signin ] start -->
-
+<div class="header-text">@yield('title', 'Bienvenido a Tareas que harás!!!!')</div>
 @yield('content')
 <!-- [ auth-signin ] end -->
 
@@ -44,5 +54,9 @@
 
 
 </body>
-
+<footer>
+	<div class="header-text">
+		@ 2024 <a href="/">{{ config('app.name')}}</a>
+	</div>
+</footer>
 </html>

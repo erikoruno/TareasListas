@@ -1,5 +1,7 @@
 @extends('layouts.form')
 
+@section('title', 'Registrate')
+
 @section('content')
 
 <div class="auth-wrapper">
