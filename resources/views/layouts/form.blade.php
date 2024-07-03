@@ -17,10 +17,8 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
+
 	
-	<div class="row align-items-center text-center">
-		<h1>Bienvenido a Tareas por hacer</h1>
-	</div>
 	<!-- Favicon icon -->
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon">
 
