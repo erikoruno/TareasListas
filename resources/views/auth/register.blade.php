@@ -28,6 +28,12 @@
 							<label class="floating-label" for="Username"></label>
 							<input type="text" class="form-control" id="Username" placeholder="Nombre" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 						</div>
+
+						<div class="form-group mb-3">
+							<label class="floating-label" for="lastname"></label>
+							<input type="text" class="form-control" id="lastname" placeholder="Apellidos" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+						</div>
+
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Email"></label>
 							<input type="text" class="form-control" id="Email" placeholder="Correo electrónico" name="email" value="{{ old('email') }}" required autocomplete="email">

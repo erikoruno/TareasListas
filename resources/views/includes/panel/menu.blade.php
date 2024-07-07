@@ -34,7 +34,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="index.html" class="nav-link ">
+                <a href="{{ url('/tareas/create')}}" class="nav-link ">
                     <span class="pcoded-micon"><i class="fas fa-plus"></i>
                     </span><span class="pcoded-mtext">Añadir Tarea</span></a>
             </li>
@@ -45,7 +45,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="index.html" class="nav-link ">
+                <a href="{{ url('/tareas')}}" class="nav-link ">
                     <span class="pcoded-micon"><i class="fas fa-receipt"></i>
                     </span><span class="pcoded-mtext">Bandeja de entrada</span>
                 </a>
@@ -62,12 +62,12 @@
                     </span><span class="pcoded-mtext">Próximo</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="index.html" class="nav-link ">
                     <span class="pcoded-micon"><i class="fa fa-th-large"></i>
                     </span><span class="pcoded-mtext">Filtros y Etiquetas</span>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item pcoded-hasmenu">
                 <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
                 <ul class="pcoded-submenu">

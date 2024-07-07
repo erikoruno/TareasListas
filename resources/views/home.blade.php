@@ -1,5 +1,6 @@
 @extends('layouts.panel')
 
+@section('title', 'Panel')
 @section('content')
 
 
