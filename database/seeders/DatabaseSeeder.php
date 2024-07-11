@@ -20,5 +20,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'eround@hotmail.com',
             'password' => bcrypt('12345678'),
         ]);
+
+    \App\Models\Tareas::factory()->create([
+        'nombreTarea' => 'Exámen',
+        'fechaVencimiento' => '2024/07/21',
+        'prioridad' => '1',
+    ]);
     }
 }

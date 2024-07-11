@@ -8,7 +8,7 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Tareas</h3>
+          <h3 class="mb-0">Tareas de {{ auth()->user()->name}} {{ auth()->user()->lastname}}</h3>
         </div>
         {{-- <div class="col text-right">
           <a href="{{ url('/lotes/create')}}" class="btn btn-sm btn-primary">Nuevo lote</a>
@@ -16,28 +16,30 @@
       </div>
     </div>
     <div class="card-body">
-        {{-- @if(session('notification'))
-          <div class="alert alert-success" role="alert">
-              {{session('notification')}}
+        @if(session('success'))
+          <div class="alert alert-success" >
+              {{session('success')}}
           </div>
-        @endif --}}
-        {{-- @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+        @endif 
+
+         @if (session('danger'))
+        <div class="alert alert-danger">
+            {{ session('danger') }}
         </div>
+
         @endif
 
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+        @if (session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
             </div>
-        @endif --}}
+        @endif 
 
     </div>
     <div class="table-responsive">
       <!-- Projects table -->
       <table class="table align-items-center table-flush">
-        <thead class="thead-light">
+        <thead class="thead-light text-dark" >
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Nombre Tarea</th>

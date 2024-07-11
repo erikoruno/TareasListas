@@ -43,6 +43,7 @@
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
 		
 			
+		
 				<div class="m-header">
 					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
 					<a href="#!" class="b-brand">
@@ -129,7 +130,9 @@
 							</div>
 						</li> --}}
 						<li>
-							<div class="dropdown drp-user">
+
+							{{-- Es la parte donde sale el otro cerrar sesión --}}
+							{{-- <div class="dropdown drp-user">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="feather icon-user"></i>
 								</a>
@@ -147,7 +150,8 @@
 											<li><a href="auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
 										</ul>
 								</div>
-							</div>
+							</div> --}}
+							{{-- .... --}}
 						</li>
 					</ul>
 				</div>
@@ -170,8 +174,8 @@
                             <h5 class="m-b-10">Tareas</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                            {{-- <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li> --}}
                         </ul>
                     </div>
                 </div>

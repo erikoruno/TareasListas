@@ -41,12 +41,12 @@ class TareasController extends Controller
 
         $tarea->save();
 
-        return redirect('/tareas')->with('sucess','Tarea actualizada correctamente');
+        return redirect('/tareas')->with('info','Tarea actualizada correctamente');
     }
 
     public function destroy(Tareas $tarea){
         $tarea->delete();
-        return redirect('/tareas')->with('success','Tarea eliminada correctamente.');
+        return redirect('/tareas')->with('danger','Tarea eliminada correctamente.');
     }
 
 }
