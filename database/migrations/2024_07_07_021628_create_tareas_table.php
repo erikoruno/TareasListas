@@ -18,6 +18,7 @@ class CreateTareasTable extends Migration
             $table->string('nombreTarea');
             $table->date('fechaVencimiento');
             $table->string('prioridad');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -5,12 +5,19 @@
             <div class="main-menu-header">
                 <img class="img-radius" src="{{ asset('images/user/user1.jpg')}}" alt="User-Profile-Image">
                 <div class="user-details">
+                    @auth
                     <div id="more-details">{{ auth()->user()->name}} <i class="fa fa-caret-down"></i></div>
+                    @endauth
                 </div>
             </div>
             <div class="collapse" id="nav-user-link">
                 <ul class="list-unstyled">
-                    <li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Ver Perfil</a></li>
+                    <li class="list-group-item">
+                        <a href="user-profile.html">
+                            <i class="feather icon-user m-r-5">
+                            </i>Ver Perfil
+                            </a>
+                    </li>
                     {{-- <li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li> --}}
                     <li class="list-group-item">
                         <a href="{{ route('logout')}}"
@@ -100,7 +107,7 @@
                 </ul>
             </li>
                      
-            <li class="nav-item">
+            {{-- <li class="nav-item">
             <a href="{{ route('logout')}}" class="nav-link "
                 onclick="event.preventDefault(); document.getElementById('formLogout').submit();"
             >
@@ -110,7 +117,7 @@
                 <form action="{{ route('logout')}}" method="POST" style="display: none;" id="formLogout">
                     @csrf
                 </form>
-            </li>
+            </li> --}}
 
         </ul>
         

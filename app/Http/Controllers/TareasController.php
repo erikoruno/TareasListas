@@ -7,9 +7,21 @@ use Illuminate\Http\Request;
 
 class TareasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
-        $tareas = Tareas::all();
-        return view('taks.index',compact('tareas'));
+        $user = auth()->user();
+
+        if ($user) {
+            $tareas = Tareas::where('user_id', $user->id)->get();
+        return view('taks.index',compact('tareas'));    
+        } else {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus tareas.');
+        }
+        
     }
 
     public function create(){
@@ -18,14 +30,25 @@ class TareasController extends Controller
 
     public function sendData(Request $request){
         
+        $user = auth()->user();
 
-        $tarea = new Tareas();
+        if ($user) {
+            $tarea = new Tareas();
         $tarea->nombreTarea = $request->input('nombreTarea');
         $tarea->fechaVencimiento = $request->input('fechaVencimiento');
         $tarea->prioridad = $request->input('prioridad');
+        $tarea->user_id= auth()->id();
+
         $tarea->save();
         return redirect('/tareas')->with('success','Tarea creada correctamente');
-    }
+
+        } else {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear tareas.');
+        }
+        }
+
+        
+    
 
     public function edit($id){
         
@@ -49,4 +72,5 @@ class TareasController extends Controller
         return redirect('/tareas')->with('danger','Tarea eliminada correctamente.');
     }
 
+   
 }

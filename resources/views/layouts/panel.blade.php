@@ -193,7 +193,7 @@
 <!-- [ Main Content ] end -->
     <!-- Warning Section start -->
     <!-- Older IE warning message -->
-    <!--[if lt IE 11]>
+    {{-- <!--[if lt IE 11]>
         <div class="ie-warning">
             <h1>Warning!!</h1>
             <p>You are using an outdated version of Internet Explorer, please upgrade
@@ -235,7 +235,7 @@
             </div>
             <p>Sorry for the inconvenience!</p>
         </div>
-    <![endif]-->
+    <![endif]--> --}}
     <!-- Warning Section Ends -->
 
     <!-- Required Js -->

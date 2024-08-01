@@ -50,6 +50,8 @@
           </tr>
         </thead>
         <tbody>
+          @if(isset($tareas) &&  $tareas->isNotEmpty())
+
             @foreach ($tareas as $tarea)           
           <tr>
             <th scope="row">
@@ -78,6 +80,12 @@
                 
           </tr>
           @endforeach
+
+          @else
+            <tr>
+              <td colspan="5" class="text-center">No tienes tareas creadas.</td>
+            </tr>
+          @endif
         </tbody>
       </table>
     </div>

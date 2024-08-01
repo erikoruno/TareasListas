@@ -12,6 +12,11 @@ class Tareas extends Model
     protected $fillable = [
         'nombreTarea',
         'fechaVencimiento',
-        'prioridad'
+        'prioridad',
+        'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

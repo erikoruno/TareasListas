@@ -3,8 +3,13 @@
 @section('title', 'Panel')
 @section('content')
 
-
- <div class="row">
+<div>
+    <h2>Bienvenido a la aplicación donde puedes ver tús Tareas</h2>
+</div>
+<div>
+    <h3>Has click en Bandeja de entrada o en añadir tarea</h3>
+</div>
+ {{-- <div class="row">
 
     <div class="col-md-12 mb-4">
         <div class="card">
@@ -645,5 +650,5 @@
         </div>
     </div>
     <!-- Latest Customers end -->
-</div> 
+</div>  --}}
 @endsection
