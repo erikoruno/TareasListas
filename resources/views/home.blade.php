@@ -4,7 +4,7 @@
 @section('content')
 
 <div>
-    <h2>Bienvenido a la aplicación donde puedes ver tús Tareas</h2>
+    <h2>Crea las tareas que jamas haras y marca las que nunca hiciste</h2>
 </div>
 <div>
     <h3>Has click en Bandeja de entrada o en añadir tarea</h3>
