@@ -7,7 +7,7 @@
     <h2>Crea las tareas que jamas haras y marca las que nunca hiciste</h2>
 </div>
 <div>
-    <h3>Has click en Bandeja de entrada o en añadir tarea</h3>
+    <h3>elie la tarea que mas te guste y realizala para marcarla </h3>
 </div>
  {{-- <div class="row">
 
