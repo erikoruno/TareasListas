@@ -28,3 +28,5 @@ Route::get('/tareas/{tarea}/edit', [App\Http\Controllers\TareasController::class
 Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'sendData']);
 Route::put('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'update']);
 Route::delete('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'destroy']);
+
+

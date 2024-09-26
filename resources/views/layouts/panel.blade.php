@@ -17,6 +17,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
     <!-- Favicon icon -->
+	
     <link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon">
 
     <!-- vendor css -->
@@ -253,6 +254,9 @@
 
 <!-- custom-chart js -->
 <script src="{{ asset('js/pages/dashboard-main.js')}}"></script>
+
+
+
 </body>
 
 </html>

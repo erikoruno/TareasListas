@@ -72,5 +72,15 @@ class TareasController extends Controller
         return redirect('/tareas')->with('danger','Tarea eliminada correctamente.');
     }
 
-   
+    public function buscar(Request $request) {
+        $busqueda = $request->input('buscar');
+        
+        // Realizar la búsqueda en la base de datos de tareas
+        $tareas = Tarea::where('titulo', 'LIKE', "%{$busqueda}%")
+                       ->orWhere('descripcion', 'LIKE', "%{$busqueda}%")
+                       ->where('usuario_id', auth()->id())  // Asegurarse de que solo busque en las tareas del usuario
+                       ->get();
+    
+        return view('tareas.index', compact('tareas'));
+    }
 }

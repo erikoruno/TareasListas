@@ -4,6 +4,10 @@
     
 @section('content')
 
+
+
+
+
 <div class="card shadow">
     <div class="card-header border-0">
       <div class="row align-items-center">
@@ -35,6 +39,20 @@
             </div>
         @endif 
 
+    </div>
+
+    <div class="col-xl-12">
+      <form action="">
+        <div class="form-row align-items-end">
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="texto" style="border: 2px solid #007bff; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 5px;">
+          </div>
+          <div class="col-auto">
+            <input type="submit" class="btn btn-primary" value="Buscador">
+          </div>
+
+        </div>
+      </form>
     </div>
     <div class="table-responsive">
       <!-- Projects table -->
@@ -91,3 +109,4 @@
     </div>
   </div>
 @endsection
+
