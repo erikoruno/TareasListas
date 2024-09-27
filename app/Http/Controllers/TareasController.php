@@ -12,12 +12,17 @@ class TareasController extends Controller
         $this->middleware('auth');
     }
     
-    public function index(){
+    public function index(Request $request){
+
+        $texto =trim($request->get('texto')) ;
         $user = auth()->user();
 
         if ($user) {
-            $tareas = Tareas::where('user_id', $user->id)->get();
-        return view('taks.index',compact('tareas'));    
+            $tareas = Tareas::where('user_id', $user->id)
+            -> where('nombreTarea','LIKE', '%'.$texto. '%')
+            ->get();
+
+        return view('taks.index',compact('tareas','texto'));    
         } else {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus tareas.');
         }
@@ -72,15 +77,5 @@ class TareasController extends Controller
         return redirect('/tareas')->with('danger','Tarea eliminada correctamente.');
     }
 
-    public function buscar(Request $request) {
-        $busqueda = $request->input('buscar');
-        
-        // Realizar la búsqueda en la base de datos de tareas
-        $tareas = Tarea::where('titulo', 'LIKE', "%{$busqueda}%")
-                       ->orWhere('descripcion', 'LIKE', "%{$busqueda}%")
-                       ->where('usuario_id', auth()->id())  // Asegurarse de que solo busque en las tareas del usuario
-                       ->get();
     
-        return view('tareas.index', compact('tareas'));
-    }
 }

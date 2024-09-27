@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Ruta Tareas
-Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index']);
+Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index'])-> name('tasks.index');
 Route::get('/tareas/create', [App\Http\Controllers\TareasController::class, 'create']);
 Route::get('/tareas/{tarea}/edit', [App\Http\Controllers\TareasController::class, 'edit']);
 Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'sendData']);

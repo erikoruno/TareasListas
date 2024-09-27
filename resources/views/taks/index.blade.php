@@ -42,10 +42,12 @@
     </div>
 
     <div class="col-xl-12">
-      <form action="">
+      <form action="{{route('tasks.index')}}" method="GET">
         <div class="form-row align-items-end">
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="texto" style="border: 2px solid #007bff; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 5px;">
+            <input type="text" class="form-control" name="texto" 
+            value="{{ $texto ?? ''}}" placeholder="Busca tarea...."
+            style="border: 2px solid #007bff; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 5px;">
           </div>
           <div class="col-auto">
             <input type="submit" class="btn btn-primary" value="Buscador">

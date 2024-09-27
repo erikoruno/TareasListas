@@ -45,11 +45,11 @@
                     <span class="pcoded-micon"><i class="fas fa-plus"></i>
                     </span><span class="pcoded-mtext">Añadir Tarea</span></a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="#"  class="nav-link" >
                     <span class="pcoded-micon"><i class="fas fa-search"></i>
                     </span><span class="pcoded-mtext">Buscador</span></a>
-            </li>
+            </li> --}}
 
            
 
