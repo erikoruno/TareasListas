@@ -50,8 +50,12 @@
             style="border: 2px solid #007bff; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 5px;">
           </div>
           <div class="col-auto">
-            <input type="submit" class="btn btn-primary" value="Buscador">
+            <input type="submit" class="btn btn-success" value="Buscador ">
           </div>
+          <div class="col-auto">
+            <a href="{{ url('/tareas/pdf') }}" class="btn btn-dark" target="_blank">Imprimir tareas</a>
+          </div>
+
 
         </div>
       </form>

@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get('/tareas/pdf', [App\Http\Controllers\TareasController::class, 'pdf'])->name('taks.pdf');
 //Ruta Tareas
 Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index'])-> name('tasks.index');
 Route::get('/tareas/create', [App\Http\Controllers\TareasController::class, 'create']);

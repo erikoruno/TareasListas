@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tareas;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class TareasController extends Controller
 {
@@ -28,6 +30,16 @@ class TareasController extends Controller
         }
         
     }
+
+    public function pdf()
+    {
+       $tareas = Tareas::all();
+       $pdf = Pdf::loadView('taks.pdf', compact('tareas'));
+       return $pdf->stream();
+    }
+
+    
+
 
     public function create(){
         return view('taks.create');
