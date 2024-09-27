@@ -50,10 +50,14 @@
             style="border: 2px solid #007bff; padding: 10px; font-size: 16px; margin-top: 10px; border-radius: 5px;">
           </div>
           <div class="col-auto">
-            <input type="submit" class="btn btn-success" value="Buscador ">
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-search"></i> Buscador
+          </button>
           </div>
           <div class="col-auto">
-            <a href="{{ url('/tareas/pdf') }}" class="btn btn-dark" target="_blank">Imprimir tareas</a>
+            <a href="{{ url('/tareas/pdf') }}" class="btn btn-dark" target="_blank">
+              <i class="fas fa-print"></i>
+              Imprimir tareas</a>
           </div>
 
 
