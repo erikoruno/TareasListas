@@ -16,6 +16,15 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 10px;
+                text-align: left;
+            }
+        </style>
     </head>
 
     <body>
@@ -52,12 +61,7 @@
                   <td>
                     {{$tarea->prioridad}}
                   </td>
-                <td> 
-                 
-                  
-                  
-                 
-                </td>
+                
                     
               </tr>
               @endforeach
