@@ -31,4 +31,7 @@ Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'sendData'
 Route::put('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'update']);
 Route::delete('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'destroy']);
 
+// Ruta para Kanban
+Route::get('/metodos/kanban', [App\Http\Controllers\KanbanController::class, 'index'])->name('kanban.index');
+
 

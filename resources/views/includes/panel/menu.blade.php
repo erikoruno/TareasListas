@@ -71,6 +71,14 @@
                     </span><span class="pcoded-mtext">Próximo</span>
                 </a>
             </li>
+            <li class="nav-item pcoded-menu-caption">
+                <label>Metodos</label>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('kanban.index')}}" class="nav-link ">
+                    <span class="pcoded-micon"><i class="fas fa-columns"></i>
+                </span><span class="pcoded-mtext">Kanban</span></a>
+            </li>
             {{-- <li class="nav-item">
                 <a href="index.html" class="nav-link ">
                     <span class="pcoded-micon"><i class="fa fa-th-large"></i>
@@ -108,7 +116,6 @@
                     <li><a href="bc_extra.html">Other</a></li>
                 </ul>
             </li>
-                     
             {{-- <li class="nav-item">
             <a href="{{ route('logout')}}" class="nav-link "
                 onclick="event.preventDefault(); document.getElementById('formLogout').submit();"
