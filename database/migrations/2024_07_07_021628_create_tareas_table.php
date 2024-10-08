@@ -33,3 +33,4 @@ class CreateTareasTable extends Migration
         Schema::dropIfExists('tareas');
     }
 }
+

@@ -1,37 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TareasController;
+use App\Http\Controllers\KanbanController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('auth/login');
+// Ruta para la página de inicio
+Route::get('/', function () { 
+    return view('auth/login'); 
 });
+
+// Ruta para la vista de bienvenida
+Route::get('/', function () { 
+    return view('welcome'); 
+})->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Ruta para la página de inicio de la aplicación
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/menu', [HomeController::class, 'index'])->name('menu.index');
+
+// Rutas Tareas
+Route::get('/tareas', [TareasController::class, 'index'])->name('tasks.index');
+Route::get('/tareas/create', [TareasController::class, 'create'])->name('tasks.create');
+Route::get('/tareas/{tarea}/edit', [TareasController::class, 'edit'])->name('tasks.edit');
+Route::post('/tareas', [TareasController::class, 'sendData'])->name('tasks.store');
+Route::put('/tareas/{tarea}', [TareasController::class, 'update'])->name('tasks.update');
+Route::delete('/tareas/{tarea}', [TareasController::class, 'destroy'])->name('tasks.destroy');
+
+// Rutas Kanban
+Route::get('/kanban', [TareasController::class, 'kanban'])->name('kanban.index');
 
 
-Route::get('/tareas/pdf', [App\Http\Controllers\TareasController::class, 'pdf'])->name('taks.pdf');
-//Ruta Tareas
-Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index'])-> name('tasks.index');
-Route::get('/tareas/create', [App\Http\Controllers\TareasController::class, 'create']);
-Route::get('/tareas/{tarea}/edit', [App\Http\Controllers\TareasController::class, 'edit']);
-Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'sendData']);
-Route::put('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'update']);
-Route::delete('/tareas/{tarea}', [App\Http\Controllers\TareasController::class, 'destroy']);
-
-// Ruta para Kanban
-Route::get('/metodos/kanban', [App\Http\Controllers\KanbanController::class, 'index'])->name('kanban.index');
-
+//Rutas calendario
+Route::get('/calendario', [TareasController::class, 'calendario'])->name('calendario');
 

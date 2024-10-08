@@ -75,9 +75,10 @@
                 <label>Metodos</label>
             </li>
             <li class="nav-item">
-                <a href="{{ route('kanban.index')}}" class="nav-link ">
-                    <span class="pcoded-micon"><i class="fas fa-columns"></i>
-                </span><span class="pcoded-mtext">Kanban</span></a>
+            <a href="{{ route('kanban.index') }}" class="nav-link ">
+                <span class="pcoded-micon"><i class="fas fa-columns"></i></span>
+                <span class="pcoded-mtext">Kanban</span>
+            </a>
             </li>
             {{-- <li class="nav-item">
                 <a href="index.html" class="nav-link ">
