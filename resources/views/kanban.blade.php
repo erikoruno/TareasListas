@@ -10,7 +10,8 @@
     <!-- Botones para agregar y gestionar tareas -->
     <div class="d-flex justify-content-between mb-4">
         <button class="btn btn-primary" id="btnAgregarTarea">Agregar Tarea</button>
-        <button class="btn btn-secondary" id="btnGestionarTareas">Gestionar Tareas</button>
+        <!-- Modificado: Cambié el nombre y redirijo a la vista de creación de tareas -->
+        <a href="{{ url('/tareas/create') }}" class="btn btn-secondary">Crear Tarea</a>
     </div>
 
     <!-- Contenedor del tablero Kanban -->
@@ -19,7 +20,7 @@
         <div class="col-md-4">
             <h4 class="text-center">Fecha Inicio</h4>
             <div class="kanban-column" id="fechaInicio">
-                <!-- Aquí se agregarán tareas arrastradas -->
+                <!-- Aquí se agregarán tareas -->
             </div>
         </div>
 
@@ -27,7 +28,7 @@
         <div class="col-md-4">
             <h4 class="text-center">En Curso</h4>
             <div class="kanban-column" id="enCurso">
-                <!-- Aquí se agregarán tareas arrastradas -->
+                <!-- Aquí se agregarán tareas -->
             </div>
         </div>
 
@@ -35,12 +36,12 @@
         <div class="col-md-4">
             <h4 class="text-center">Finalizado</h4>
             <div class="kanban-column" id="finalizado">
-                <!-- Aquí se agregarán tareas arrastradas -->
+                <!-- Aquí se agregarán tareas -->
             </div>
         </div>
     </div>
 
-    <!-- Modal para mostrar las tareas activas y arrastrarlas -->
+    <!-- Modal para mostrar las tareas activas -->
     <div class="modal fade" id="tareasModal" tabindex="-1" role="dialog" aria-labelledby="tareasModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -54,7 +55,7 @@
                     <!-- Listado de tareas activas -->
                     <div id="tareasActivas">
                         @foreach($tareasCurso as $tarea)
-                            <div class="kanban-task" draggable="true" data-id="{{ $tarea->id }}">
+                            <div class="kanban-task" data-id="{{ $tarea->id }}" onclick="seleccionarTarea('{{ $tarea->id }}', '{{ $tarea->nombreTarea }}', '{{ $tarea->prioridad }}')">
                                 {{ $tarea->nombreTarea }} (Prioridad: {{ $tarea->prioridad }})
                             </div>
                         @endforeach
@@ -66,6 +67,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal para confirmar mover tarea -->
+    <div class="modal fade" id="confirmarMoverTareaModal" tabindex="-1" role="dialog" aria-labelledby="confirmarMoverTareaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarMoverTareaLabel">Mover Tarea</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="tareaSeleccionadaTexto"></p>
+                    <button type="button" class="btn btn-success" id="btnMoverTarea">Pasar a En Curso</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Estilos para el tablero y tareas -->
@@ -84,15 +107,11 @@
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 4px;
-        cursor: move;
+        cursor: pointer;
     }
 
     .kanban-task:hover {
         background-color: #0056b3;
-    }
-
-    .kanban-task.dragging {
-        opacity: 0.5;
     }
 
     .kanban-column.drag-over {
@@ -100,42 +119,65 @@
     }
 </style>
 
-<!-- Scripts para manejar el drag & drop -->
+<!-- Scripts para manejar la selección y el movimiento de tareas -->
 <script>
-    let draggedTask = null;
+    let tareaSeleccionadaId = null;
+    let currentColumn = null;
 
     // Abrir modal de tareas activas
     document.getElementById('btnAgregarTarea').addEventListener('click', function() {
         $('#tareasModal').modal('show');
     });
 
-    // Drag & Drop para tareas
-    document.querySelectorAll('.kanban-task').forEach(task => {
-        task.addEventListener('dragstart', function() {
-            draggedTask = this;
-            this.classList.add('dragging');
-        });
-
-        task.addEventListener('dragend', function() {
-            draggedTask = null;
-            this.classList.remove('dragging');
-        });
-    });
-
-    // Función para permitir soltar en las columnas
-    function allowDrop(event) {
-        event.preventDefault();
+    // Función para seleccionar una tarea desde tareas activas y abrir el modal de confirmación
+    function seleccionarTarea(id, nombreTarea, prioridad) {
+        tareaSeleccionadaId = id;
+        document.getElementById('tareaSeleccionadaTexto').innerText = `Tarea: ${nombreTarea} (Prioridad: ${prioridad})`;
+        currentColumn = 'tareasActivas';
+        $('#tareasModal').modal('hide'); // Cerrar el modal de tareas activas
+        document.getElementById('btnMoverTarea').innerText = 'Agregar a Fecha Inicio';
+        $('#confirmarMoverTareaModal').modal('show'); // Abrir el modal de confirmación
     }
 
-    // Manejadores de arrastre y soltado para las columnas
-    document.querySelectorAll('.kanban-column').forEach(column => {
-        column.addEventListener('dragover', allowDrop);
+    // Función para seleccionar una tarea desde "Fecha Inicio" y abrir el modal para pasar a "En Curso"
+    document.getElementById('fechaInicio').addEventListener('click', function(event) {
+        if (event.target.classList.contains('kanban-task')) {
+            tareaSeleccionadaId = event.target.getAttribute('data-id');
+            const nombreTarea = event.target.innerText;
+            document.getElementById('tareaSeleccionadaTexto').innerText = `Mover: ${nombreTarea}`;
+            currentColumn = 'fechaInicio';
+            document.getElementById('btnMoverTarea').innerText = 'Pasar a En Curso';
+            $('#confirmarMoverTareaModal').modal('show');
+        }
+    });
 
-        column.addEventListener('drop', function() {
-            if (draggedTask) {
-                this.appendChild(draggedTask);
+    // Función para seleccionar una tarea desde "En Curso" y abrir el modal para pasar a "Finalizado"
+    document.getElementById('enCurso').addEventListener('click', function(event) {
+        if (event.target.classList.contains('kanban-task')) {
+            tareaSeleccionadaId = event.target.getAttribute('data-id');
+            const nombreTarea = event.target.innerText;
+            document.getElementById('tareaSeleccionadaTexto').innerText = `Mover: ${nombreTarea}`;
+            currentColumn = 'enCurso';
+            document.getElementById('btnMoverTarea').innerText = 'Pasar a Finalizado';
+            $('#confirmarMoverTareaModal').modal('show');
+        }
+    });
+
+    // Mover tarea seleccionada a la siguiente columna según el estado actual
+    document.getElementById('btnMoverTarea').addEventListener('click', function() {
+        if (tareaSeleccionadaId) {
+            let tarea = document.querySelector(`.kanban-task[data-id='${tareaSeleccionadaId}']`);
+            
+            if (currentColumn === 'tareasActivas') {
+                document.getElementById('fechaInicio').appendChild(tarea); // Mover tarea a "Fecha Inicio"
+            } else if (currentColumn === 'fechaInicio') {
+                document.getElementById('enCurso').appendChild(tarea); // Mover tarea a "En Curso"
+            } else if (currentColumn === 'enCurso') {
+                document.getElementById('finalizado').appendChild(tarea); // Mover tarea a "Finalizado"
             }
-        });
+
+            $('#confirmarMoverTareaModal').modal('hide'); // Cerrar el modal de confirmación
+        }
     });
 </script>
 

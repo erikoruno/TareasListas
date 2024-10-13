@@ -32,7 +32,6 @@ Route::delete('/tareas/{tarea}', [TareasController::class, 'destroy'])->name('ta
 // Rutas Kanban
 Route::get('/kanban', [TareasController::class, 'kanban'])->name('kanban.index');
 
-
-//Rutas calendario
+// Rutas calendario
 Route::get('/calendario', [TareasController::class, 'calendario'])->name('calendario');
 
