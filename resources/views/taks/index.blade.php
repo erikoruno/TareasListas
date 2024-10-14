@@ -46,7 +46,6 @@
         </thead>
         <tbody>
           @if(isset($tareas) &&  $tareas->isNotEmpty())
-
             @foreach ($tareas as $tarea)           
           <tr>
             <th scope="row">
@@ -59,10 +58,15 @@
                 {{$tarea->fechaVencimiento}}
             </td>
             <td>
-                {{$tarea->prioridad}}
+                @if($tarea->prioridad == 1)
+                    <span class="badge badge-danger">Alta</span> <!-- Rojo para alta -->
+                @elseif($tarea->prioridad == 2)
+                    <span class="badge badge-warning">Media</span> <!-- Amarillo para media -->
+                @elseif($tarea->prioridad == 3)
+                    <span class="badge badge-success">Baja</span> <!-- Verde para baja -->
+                @endif
             </td>
             <td>
-              
               @if($tarea->estado == 'vencida')
                   <span class="badge badge-danger">Vencida</span>
               @elseif($tarea->estado == 'por_vencer')
@@ -81,7 +85,6 @@
             </td>
           </tr>
           @endforeach
-
           @else
             <tr>
               <td colspan="6" class="text-center">No tienes tareas creadas.</td>

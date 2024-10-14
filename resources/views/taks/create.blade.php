@@ -51,7 +51,7 @@
                         <!-- Indicador del semáforo -->
                         <div id="semaforo" style="width: 20px; height: 20px; background-color: green; margin-right: 10px; border-radius: 50%;"></div>
 
-                        <!-- Select para la prioridad -->
+                        
                         <select name="prioridad" id="prioridad" class="form-control" onchange="cambiarColorSemaforo()">
                             <option value="1">Alta</option>
                             <option value="2">Media</option>
@@ -79,22 +79,22 @@
     @endforeach
 @endif
 
-<!-- Script para cambiar el color del semáforo -->
+
 <script>
     function cambiarColorSemaforo() {
         var prioridad = document.getElementById('prioridad').value;
         var semaforo = document.getElementById('semaforo');
         
         if (prioridad == 1) {
-            semaforo.style.backgroundColor = 'red'; // Alta prioridad
+            semaforo.style.backgroundColor = 'red'; 
         } else if (prioridad == 2) {
-            semaforo.style.backgroundColor = 'yellow'; // Prioridad media
+            semaforo.style.backgroundColor = 'yellow'; 
         } else if (prioridad == 3) {
-            semaforo.style.backgroundColor = 'green'; // Baja prioridad
+            semaforo.style.backgroundColor = 'green'; 
         }
     }
     
-    // Para asegurarnos que el semáforo esté configurado correctamente cuando se cargue la página
+   
     window.onload = function() {
         cambiarColorSemaforo();
     }
