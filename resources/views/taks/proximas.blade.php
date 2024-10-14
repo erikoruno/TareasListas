@@ -5,7 +5,7 @@
 @section('content')
 <div class="card shadow">
     <div class="card-header border-0">
-        <h3 class="mb-0">T</h3>
+        <h3 class="mb-0">Tareas Prooximas</h3>
     </div>
     <div class="card-body">
         @if ($tareas->isNotEmpty())
