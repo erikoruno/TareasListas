@@ -56,19 +56,20 @@
                     <span class="pcoded-micon"><i class="fas fa-receipt"></i>
                     </span><span class="pcoded-mtext">Bandeja de entrada</span>
                 </a>
-            </li>
+            </li>   
             <li class="nav-item">
-                <a href="index.html" class="nav-link ">
-                    <span class="pcoded-micon"><i class="far fa-calendar"></i>
-                    </span><span class="pcoded-mtext">Hoy</span>
+                <a href="{{ route('tareas.hoy') }}" class="nav-link ">
+                    <span class="pcoded-micon"><i class="far fa-calendar"></i></span>
+                    <span class="pcoded-mtext">Hoy</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link ">
-                    <span class="pcoded-micon"><i class="far fa-calendar-alt"></i>
-                    </span><span class="pcoded-mtext">Próximo</span>
+                <a href="{{ route('tareas.proximas') }}" class="nav-link ">
+                    <span class="pcoded-micon"><i class="far fa-calendar-alt"></i></span>
+                    <span class="pcoded-mtext">Próximo</span>
                 </a>
             </li>
+            
             {{-- <li class="nav-item">
                 <a href="index.html" class="nav-link ">
                     <span class="pcoded-micon"><i class="fa fa-th-large"></i>

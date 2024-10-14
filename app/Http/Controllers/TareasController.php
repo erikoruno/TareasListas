@@ -17,15 +17,12 @@ class TareasController extends Controller
         $user = auth()->user();
 
         if ($user) {
-          
             $tareas = Tareas::where('user_id', $user->id)->get();
 
-         
             foreach ($tareas as $tarea) {
                 $fechaActual = Carbon::now(); 
                 $fechaVencimiento = Carbon::parse($tarea->fechaVencimiento); 
 
-             
                 if ($fechaVencimiento->isPast()) {
                     $tarea->estado = 'vencida'; 
                 } elseif ($fechaVencimiento->diffInDays($fechaActual) <= 3) {
@@ -36,6 +33,36 @@ class TareasController extends Controller
             }
 
             return view('taks.index', compact('tareas'));    
+        } else {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus tareas.');
+        }
+    }
+
+    public function tareasHoy()
+    {
+        $user = auth()->user();
+
+        if ($user) {
+            $tareas = Tareas::where('user_id', $user->id)
+                ->whereDate('fechaVencimiento', Carbon::today())
+                ->get();
+
+            return view('taks.hoy', compact('tareas'));
+        } else {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus tareas.');
+        }
+    }
+
+    public function tareasProximas()
+    {
+        $user = auth()->user();
+
+        if ($user) {
+            $tareas = Tareas::where('user_id', $user->id)
+                ->where('fechaVencimiento', '>', Carbon::today())
+                ->get();
+
+            return view('taks.proximas', compact('tareas'));
         } else {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus tareas.');
         }
@@ -56,7 +83,7 @@ class TareasController extends Controller
             $tarea->user_id = auth()->id();
             $tarea->save();
 
-            return redirect('/tareas')->with('success','Tarea creada correctamente');
+            return redirect('/tareas')->with('success', 'Tarea creada correctamente');
         } else {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear tareas.');
         }
@@ -73,11 +100,11 @@ class TareasController extends Controller
         $tarea->prioridad = $request->input('prioridad');
         $tarea->save();
 
-        return redirect('/tareas')->with('info','Tarea actualizada correctamente');
+        return redirect('/tareas')->with('info', 'Tarea actualizada correctamente');
     }
 
     public function destroy(Tareas $tarea){
         $tarea->delete();
-        return redirect('/tareas')->with('danger','Tarea eliminada correctamente.');
+        return redirect('/tareas')->with('danger', 'Tarea eliminada correctamente.');
     }
 }
