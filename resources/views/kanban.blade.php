@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Tablero Kanban</h2>
+    <!-- Modificado: Título con borde, esquinas redondeadas y fondo blanco -->
+    <h2 class="text-center mb-4 p-3" style="border: 2px solid #ccc; border-radius: 10px; background-color: white; display: inline-block;">
+        Tablero Kanban
+    </h2>
+
 
     <!-- Botones para agregar y gestionar tareas -->
     <div class="d-flex justify-content-between mb-4">
@@ -19,7 +23,7 @@
         <!-- Columna: Fecha Inicio -->
         <div class="col-md-4">
             <h4 class="text-center">Fecha Inicio</h4>
-            <div class="kanban-column" id="fechaInicio">
+            <div class="kanban-column" id="fechaInicio" style="background-color: rgba(0, 255, 0, 0.2);">
                 <!-- Aquí se agregarán tareas -->
             </div>
         </div>
@@ -27,7 +31,7 @@
         <!-- Columna: En Curso -->
         <div class="col-md-4">
             <h4 class="text-center">En Curso</h4>
-            <div class="kanban-column" id="enCurso">
+            <div class="kanban-column" id="enCurso" style="background-color: rgba(255, 255, 0, 0.2);">
                 <!-- Aquí se agregarán tareas -->
             </div>
         </div>
@@ -35,7 +39,7 @@
         <!-- Columna: Finalizado -->
         <div class="col-md-4">
             <h4 class="text-center">Finalizado</h4>
-            <div class="kanban-column" id="finalizado">
+            <div class="kanban-column" id="finalizado" style="background-color: rgba(255, 0, 0, 0.2);">
                 <!-- Aquí se agregarán tareas -->
             </div>
         </div>
@@ -97,7 +101,6 @@
         border: 1px solid #ccc;
         padding: 10px;
         min-height: 300px;
-        background-color: #f8f9fa;
         border-radius: 8px;
     }
 
