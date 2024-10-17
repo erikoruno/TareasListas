@@ -99,8 +99,12 @@
               <form action="{{ url('/tareas/'.$tarea->id)}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <a href="{{ url('/tareas/'.$tarea->id.'/edit')}}" class="btn btn-sm btn-primary">Editar</a>
-                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                <a href="{{ url('/tareas/'.$tarea->id.'/edit')}}" class="btn btn-sm btn-primary">
+                  <i class="fas fa-edit"></i>
+                  Editar</a>
+                <button type="submit" class="btn btn-sm btn-danger">
+                  <i class="fas fa-trash"></i>
+                  Eliminar</button>
               </form>
               
              
